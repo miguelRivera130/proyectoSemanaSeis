@@ -1,0 +1,32 @@
+import java.io.BufferedWriter;
+import java.net.Socket;
+
+import processing.core.PApplet;
+
+public class TCPSingleton extends PApplet{
+	
+	private static TCPSingleton instance;
+	
+	private TCPSingleton() {}
+	
+	public static TCPSingleton getInstance() {
+		
+		if(instance == null) {
+			instance = new TCPSingleton();
+		}
+		return instance;
+		
+	}
+	
+	//declaraaciones
+	private BufferedWriter writer;
+	private Socket socket;
+	private Server observer;
+	
+	//suscripcionAlObserver
+	
+	public void setServer(Server observer) {
+		
+	}
+
+}

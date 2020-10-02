@@ -1,0 +1,60 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import processing.core.PApplet;
+
+public class TCPSingleton extends PApplet {
+
+	private static TCPSingleton instance;
+
+	private TCPSingleton() {
+	}
+
+	public static TCPSingleton getInstance() {
+
+		if (instance == null) {
+			instance = new TCPSingleton();
+		}
+		return instance;
+
+	}
+
+	// declaraciones
+	private BufferedWriter writer;
+	private Socket socket;
+	private Server observer;
+	private Boolean activador;
+
+	// suscripcionAlObserver
+	public void setServer(Server observer) {
+		this.observer = observer;
+	}
+
+	public void run() {
+		try {
+			
+			//ApartadoDeConeción
+			System.out.println("esperando");
+			ServerSocket server = new ServerSocket(5000);
+			socket = server.accept();
+			System.out.println("ClienteConectado");
+			
+			
+			//ApartadoDeDeclaracion
+			InputStream is = socket.getInputStream();
+			OutputStream out = socket.getOutputStream();
+			
+			writer = new BufferedWriter(new OutputStreamWriter(out));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+			
+			//ApartadoParaRecepcionDeDAtos
+			
+		}
+	}
+}

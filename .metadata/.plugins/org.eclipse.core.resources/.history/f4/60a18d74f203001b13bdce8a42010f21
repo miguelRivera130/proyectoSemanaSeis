@@ -1,0 +1,13 @@
+import processing.core.PApplet;
+
+public class TCPSingleton extends PApplet{
+	
+	private static TCPSingleton instance;
+	
+	private TCPSingleton() {}
+	
+	public static TCPSingleton getInstance{
+		
+	}
+
+}

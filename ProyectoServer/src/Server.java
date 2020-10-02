@@ -1,0 +1,35 @@
+import model.Cuenta;
+import processing.core.PApplet;
+
+public class Server extends PApplet {
+
+	private TCPSingleton tcp;
+
+	public static void main(String[] args) {
+		PApplet.main("Server");
+		
+	}
+
+	public void settings() {
+		size(600, 600);
+	}
+
+	public void setup() {
+
+		// realizacion de la suscripcion
+		tcp = TCPSingleton.getInstance();
+		tcp.setServer(this);
+		tcp.start();
+	}
+
+	public void draw() {
+		background(0);
+	}
+
+	public void messageArrival(String message) {
+		// TODO Auto-generated method stub
+		
+		//poner aca el uso que se busca dar a los datos
+		System.out.println("datos recibidos:" + " " + message);
+	}
+}
